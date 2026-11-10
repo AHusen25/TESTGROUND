@@ -1,0 +1,34 @@
+def hitung_pangkat(basis, eksponen):  # pyright: ignore[reportUnknownParameterType, reportMissingParameterType]
+    """
+    Fungsi rekursif untuk menghitung perpangkatan.
+    """
+    # Base case (kondisi berhenti)
+    if eksponen == 0:
+        return 1
+    # Rumus rekursif
+    else:
+        return basis * hitung_pangkat(basis, eksponen - 1)  # pyright: ignore[reportUnknownVariableType, reportUnknownArgumentType]
+
+
+def main():
+    print("=== PROGRAM REKURSIF OPERASI PANGKAT ===")
+
+    try:
+        # Mengambil input dari pengguna
+        basis = int(input("Masukkan bilangan basis (angka utama): "))
+        eksponen = int(input("Masukkan bilangan eksponen (pangkat bulat >= 0): "))
+
+        # Validasi agar tidak terjadi infinite loop pada pangkat negatif
+        if eksponen < 0:
+            print("Error: Program ini hanya mendukung eksponen bulat positif atau nol.")
+        else:
+            # Memanggil fungsi dan menampilkan hasil
+            hasil = hitung_pangkat(basis, eksponen)
+            print(f"\nHasil dari {basis} pangkat {eksponen} adalah: {hasil}")
+
+    except ValueError:
+        print("Error: Harap masukkan bilangan bulat yang valid!")
+
+
+if __name__ == "__main__":
+    main()
